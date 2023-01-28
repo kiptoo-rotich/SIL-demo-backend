@@ -5,7 +5,7 @@ from django.db.models.fields import CharField
 
 class Album(models.Model):
     title = CharField(max_length=50)
-    user_id = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
