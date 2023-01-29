@@ -11,6 +11,7 @@ This is a backend application for accepting post and get requests from users to 
 * Access the live site using the local host provided
 
 ## End points
+### GET and POST requests
 ```bash
 127.0.0.1:8000/api/albums
 ```
@@ -19,10 +20,7 @@ This is a backend application for accepting post and get requests from users to 
 127.0.0.1:8000/api/photos
 ```
 
-```bash
-127.0.0.1:8000/api/user
-```
-
+### POST requests
 ```bash
 127.0.0.1:8000/api/register
 ```
@@ -37,6 +35,11 @@ This is a backend application for accepting post and get requests from users to 
 
 ```bash
 127.0.0.1:8000/api/logoutall
+```
+
+### GET requests
+```bash
+127.0.0.1:8000/api/user
 ```
 
 ## Getting started
