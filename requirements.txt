@@ -11,3 +11,4 @@ pycparser==2.21
 python-decouple==3.7
 pytz==2022.7.1
 sqlparse==0.4.3
+whitenoise==6.3.0
