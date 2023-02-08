@@ -19,14 +19,14 @@ class UserAPI(generics.RetrieveAPIView):
     def get_object(self):
         return self.request.user
 
-# Create Album view to get and post data
-class AlbumList(APIView):
+class GetUsersList(APIView):
     def get(self, request):
-        albums = Album.objects.all()
-        serializers = AlbumSerializer(albums,many=True)
+        users = User.objects.all()
+        serializers = UserSerializer(users,many=True)
         return Response(serializers.data)
 
-
+# Create Album view to post data
+class AlbumList(APIView):
     def post(self, request):
         serializers = AlbumSerializer(data=request.data)
         if serializers.is_valid():
@@ -34,14 +34,32 @@ class AlbumList(APIView):
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# Pass user_id as a parameter for filtering albums
+class GetUserAlbums(generics.ListAPIView):
+    permission_classes=(permissions.AllowAny,)
+    serializer_class = AlbumSerializer
+    http_method_names = ['get']
+
+    def get_queryset(self):
+        queryset = Album.objects.all()
+        user_id = self.request.query_params.get('user_id')
+        queryset = queryset.filter(user_id=user_id)
+        return queryset
+
+
 # Create Photo view to get and post data
+class GetPhotos(generics.ListAPIView):
+    permission_classes=(permissions.AllowAny,)
+    serializer_class = PhotoSerializer
+    http_method_names = ['get']
+
+    def get_queryset(self):
+        queryset = Album.objects.all()
+        album_id = self.request.query_params.get('album_id')
+        queryset = queryset.filter(album_id=album_id)
+        return queryset
+
 class PhotoList(APIView):
-    def get(self, request):
-        photos = Photo.objects.all()
-        serializers = PhotoSerializer(photos,many=True)
-        return Response(serializers.data)
-
-
     def post(self, request):
         serializers = PhotoSerializer(data=request.data)
         if serializers.is_valid():
