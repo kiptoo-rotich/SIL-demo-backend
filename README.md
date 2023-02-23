@@ -1,7 +1,7 @@
 #### Author: [Kiptoo Rotich](https://github.com/kiptoo-rotich)
 
 ## Description
-This is a backend application for accepting post and get requests from users to Album, Photo and User models.
+This is a simple create user and login user API using DRF.
 
 ## Setup and installations
 * Clone Project to your machine
@@ -11,14 +11,6 @@ This is a backend application for accepting post and get requests from users to 
 * Access the live site using the local host provided
 
 ## End points
-### GET and POST requests
-```bash
-127.0.0.1:8000/api/albums
-```
-
-```bash
-127.0.0.1:8000/api/photos
-```
 
 ### POST requests
 ```bash
@@ -35,11 +27,6 @@ This is a backend application for accepting post and get requests from users to 
 
 ```bash
 127.0.0.1:8000/api/logoutall
-```
-
-### GET requests
-```bash
-127.0.0.1:8000/api/user
 ```
 
 ## Getting started
